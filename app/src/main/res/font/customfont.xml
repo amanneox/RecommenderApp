@@ -15,4 +15,13 @@
 
     <font android:font="@font/neosansmediumitalic"
         app:font="@font/neosansmediumitalic"/>
+
+    <font android:font="@font/neosansmedium"
+        app:font="@font/neosansmedium"/>
+
+    <font android:font="@font/neosanslight"
+        app:font="@font/neosanslight"/>
+
+    <font android:font="@font/neosansregular"
+        app:font="@font/neosansregular"/>
 </font-family>

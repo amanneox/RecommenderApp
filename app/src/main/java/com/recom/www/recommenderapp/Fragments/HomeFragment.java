@@ -4,6 +4,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +16,18 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.recom.www.recommenderapp.Adapters.CustomGridViewActivity;
+import com.recom.www.recommenderapp.Adapters.HomeAdapter;
+import com.recom.www.recommenderapp.Models.Home_Model;
 import com.recom.www.recommenderapp.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
     GridView androidGridView;
-
+    private List<Home_Model> itemlist = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private HomeAdapter mAdapter;
     String[] gridViewString = {
             "Food", "Shopping", "Hot&New", "Delivery", "Bars", "Coffee",
             "Gas Station", "Drug Store", "Deals", "More"
@@ -33,7 +43,15 @@ public class HomeFragment extends Fragment {
 
 
         View rootview=inflater.inflate(R.layout.home_view, container, false);
+       RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_home);
 
+        mAdapter = new HomeAdapter(itemlist);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+
+        prepareMovieData();
         CustomGridViewActivity adapterViewAndroid = new CustomGridViewActivity(getContext(), gridViewString, gridViewImageId);
         androidGridView=(GridView)rootview.findViewById(R.id.grid_view_image_text);
         androidGridView.setAdapter(adapterViewAndroid);
@@ -47,6 +65,36 @@ public class HomeFragment extends Fragment {
         });
 
         return rootview;
+    }
+
+    private void prepareMovieData() {
+        Home_Model item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        itemlist.add(item);
+
     }
 
 

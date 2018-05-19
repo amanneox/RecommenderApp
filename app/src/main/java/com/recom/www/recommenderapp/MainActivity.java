@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        CoordinatorLayout.LayoutParams layoutParams1 = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
+        layoutParams1.setBehavior(new BottomNavigationBehavior());
+
         loadFragment(new HomeFragment());
 
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigation.getChildAt(0);
