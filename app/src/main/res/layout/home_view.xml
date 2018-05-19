@@ -17,5 +17,15 @@
         android:columnWidth="70dp"
         android:gravity="center"
         android:numColumns="auto_fit" />
+
+    <View
+        android:id="@+id/breakline"
+        android:layout_margin="22dp"
+        android:layout_below="@id/grid_view_image_text"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:visibility="visible" />
+
 </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

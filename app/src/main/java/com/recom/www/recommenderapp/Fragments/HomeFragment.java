@@ -23,8 +23,8 @@ public class HomeFragment extends Fragment {
             "Gas Station", "Drug Store", "Deals", "More"
     } ;
     int[] gridViewImageId = {
-            R.drawable.ic_cutlery, R.drawable.ic_shopping_cart, R.drawable.ic_hot, R.drawable.ic_delivery_truck, R.drawable.ic_cheers, R.drawable.ic_cutlery,
-            R.drawable.ic_cutlery, R.drawable.ic_cutlery, R.drawable.ic_cutlery, R.drawable.ic_cutlery
+            R.drawable.ic_cutlery, R.drawable.ic_shopping_cart, R.drawable.ic_hot, R.drawable.ic_delivery_truck, R.drawable.ic_cheers, R.drawable.ic_coffee,
+            R.drawable.ic_gasoline_pump, R.drawable.ic_pill, R.drawable.ic_bill, R.drawable.ic_plus
     };
 
     @Override
