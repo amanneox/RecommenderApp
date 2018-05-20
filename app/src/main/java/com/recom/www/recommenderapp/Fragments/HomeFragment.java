@@ -68,33 +68,30 @@ public class HomeFragment extends Fragment {
     }
 
     private void prepareMovieData() {
-        Home_Model item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        Home_Model  item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","600",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
+        itemlist.add(item);
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","500",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
         itemlist.add(item);
 
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
         itemlist.add(item);
 
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
         itemlist.add(item);
 
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
         itemlist.add(item);
 
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"","");
         itemlist.add(item);
 
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
         itemlist.add(item);
 
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
         itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
+        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
         itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"");
-        itemlist.add(item);
-
     }
 
 

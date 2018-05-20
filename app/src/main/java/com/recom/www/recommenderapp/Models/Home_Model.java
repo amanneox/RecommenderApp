@@ -10,19 +10,20 @@ import com.bumptech.glide.request.RequestOptions;
 import com.recom.www.recommenderapp.BR;
 
 public class Home_Model extends BaseObservable {
-    private String title, genre, name,price,imgUrl;
+    private String title, genre, name,price,imgUrl,mile;
     private int rating;
 
     public Home_Model() {
     }
 
-    public Home_Model(String title, String genre, String name,String price,int rating,String imgUrl) {
+    public Home_Model(String title, String genre, String name,String price,int rating,String imgUrl,String mile) {
         this.title = title;
         this.genre = genre;
         this.name = name;
         this.price=price;
         this.rating=rating;
         this.imgUrl=imgUrl;
+        this.mile=mile;
     }
 
     @BindingAdapter({"imgUrl"})
@@ -31,6 +32,15 @@ public class Home_Model extends BaseObservable {
                 .load(imageUrl)
                 .into(view);
     }
+
+    public String getMile() {
+        return mile;
+    }
+
+    public void setMile(String mile) {
+        this.mile = mile;
+    }
+
     public String getImgUrl() {
         return imgUrl;
     }
