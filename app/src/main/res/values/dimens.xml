@@ -7,4 +7,6 @@
     <dimen name="row_padding_vertical">10dp</dimen>
     <dimen name="home_model_image_width">320dp</dimen>
     <dimen name="home_model_image">140dp</dimen>
+
+    <dimen name="user_img">100dp</dimen>
 </resources>
