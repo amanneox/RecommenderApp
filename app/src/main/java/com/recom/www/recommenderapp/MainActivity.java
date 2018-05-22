@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.recom.www.recommenderapp.Fragments.HomeFragment;
+import com.recom.www.recommenderapp.Fragments.ProfileFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_nearby:
                     return true;
                 case R.id.navigation_user:
+                    fragment = new ProfileFragment();
+                    loadFragment(fragment);
                     return true;
             }
             return false;
