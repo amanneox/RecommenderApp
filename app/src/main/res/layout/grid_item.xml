@@ -18,5 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/neosanslight"
+        android:textColor="@color/colorGrey"
+        android:textStyle="bold"
         android:textSize="12sp" />
 </LinearLayout>

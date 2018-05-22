@@ -16,22 +16,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:fontFamily="@font/neosansblack"
         android:textStyle="bold" />
 
+    <View
+        android:id="@+id/headline"
+        android:layout_below="@id/title"
+        android:layout_width="70dp"
+        android:layout_height="5dp"
+        android:padding="4dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/colorBlack"
+        android:visibility="visible" />
+
+
     <ImageView
         android:id="@+id/image"
-        android:layout_below="@id/title"
+        android:layout_below="@id/headline"
         android:layout_width="match_parent"
+        android:layout_margin="6dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
         android:layout_height="@dimen/home_model_image" />
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorBlack"
         android:fontFamily="@font/neosansregular"
         android:layout_below="@id/image" />
 
@@ -47,7 +62,8 @@
         android:id="@+id/price"
         android:textColor="@color/colorPrimary"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:layout_alignEnd="@id/genre"
         android:fontFamily="@font/neosanslight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -59,5 +75,15 @@
         android:layout_alignParentRight="true"
         android:fontFamily="@font/neosanslight"
         android:textColor="@color/colorPrimary" />
+
+    <View
+        android:id="@+id/breakline"
+        android:layout_below="@id/genre"
+        android:layout_width="fill_parent"
+        android:layout_height=".2dp"
+        android:padding="0dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorPrimary"
+        android:visibility="visible" />
 
 </RelativeLayout>
