@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.recom.www.recommenderapp.Models.Home_Model;
+import com.recom.www.recommenderapp.Models.User_Model;
 import com.recom.www.recommenderapp.R;
 
 import java.util.List;
@@ -18,17 +20,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     private List<User_Model> itemlist;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, mile, genre,name,price;
-        public ImageView image;
+        public TextView date, time,name;
+        RatingBar rating;
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            genre = (TextView) view.findViewById(R.id.genre);
-            mile = (TextView) view.findViewById(R.id.mile);
+            date=view.findViewById(R.id.date);
+            time=view.findViewById(R.id.time);
             name=(TextView)view.findViewById(R.id.name);
-            image=view.findViewById(R.id.image);
-            price=view.findViewById(R.id.price);
+            rating=view.findViewById(R.id.ratingbar);
         }
     }
 
@@ -40,7 +40,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.home_list, parent, false);
+                .inflate(R.layout.user_activity_list, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -48,14 +48,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         User_Model item = itemlist.get(position);
-        holder.title.setText(item.getTitle());
-        holder.genre.setText(item.getGenre());
-        holder.mile.setText(item.getMile());
         holder.name.setText(item.getName());
-        holder.price.setText(item.getPrice());
-        Glide.with(holder.image.getContext())
-                .load(item.getImgUrl())
-                .into(holder.image);
+        holder.date.setText(item.getDate());
+        holder.time.setText(item.getTime());
+        holder.rating.setRating(item.getRating());
     }
 
     @Override
