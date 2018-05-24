@@ -43,16 +43,24 @@
         android:layout_height="@dimen/home_model_image" />
     <TextView
         android:id="@+id/name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/colorBlack"
         android:fontFamily="@font/neosansregular"
         android:layout_below="@id/image" />
 
+    <RatingBar
+        android:id="@+id/ratingbar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name"
+        android:layout_alignEnd="@+id/title"
+        android:progressTint="@color/colorPrimary" />
     <TextView
         android:id="@+id/genre"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:fontFamily="@font/neosansmedium"
@@ -60,13 +68,12 @@
 
     <TextView
         android:id="@+id/price"
-        android:textColor="@color/colorPrimary"
-        android:layout_alignParentBottom="true"
-        android:gravity="end"
-        android:layout_alignEnd="@id/genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ratingbar"
+        android:layout_below="@+id/name"
         android:fontFamily="@font/neosanslight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/mile"
