@@ -29,12 +29,12 @@ public class ProfileFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserAdapter mAdapter;
     String[] gridViewString = {
-            "Bookmarks", "My Reviews", "My Check-ins", "Settings", "Bars", "Coffee",
-            "Gas Station"
+            "Bookmarks", "My Reviews", "My Check-ins", "Settings", "History", "Offers",
+            "Friends","Messages"
     } ;
     int[] gridViewImageId = {
-            R.drawable.ic_bookmark, R.drawable.ic_review, R.drawable.ic_street_map, R.drawable.ic_settings, R.drawable.ic_cheers, R.drawable.ic_coffee,
-            R.drawable.ic_gasoline_pump
+            R.drawable.ic_bookmark, R.drawable.ic_review, R.drawable.ic_street_map, R.drawable.ic_settings, R.drawable.ic_history, R.drawable.ic_discount,
+            R.drawable.ic_facebook,R.drawable.ic_chat
     };
 
     @Override
