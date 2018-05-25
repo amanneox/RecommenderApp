@@ -1,6 +1,7 @@
 package com.recom.www.recommenderapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -16,6 +17,7 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.recom.www.recommenderapp.Fragments.HomeFragment;
 import com.recom.www.recommenderapp.Fragments.ProfileFragment;

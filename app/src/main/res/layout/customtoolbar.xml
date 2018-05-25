@@ -55,7 +55,8 @@
                 android:background="@drawable/bg_search"
                 android:drawableRight="@drawable/ic_zoom"
                 android:focusedByDefault="false"
-                android:enabled="false"
+                android:enabled="true"
+                android:focusable="false"
                 android:defaultFocusHighlightEnabled="false"
                 android:inputType="text"
                 tools:ignore="LabelFor" />

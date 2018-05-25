@@ -1,5 +1,6 @@
 package com.recom.www.recommenderapp.Fragments;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.recom.www.recommenderapp.Adapters.CustomGridViewActivity;
 import com.recom.www.recommenderapp.Adapters.HomeAdapter;
 import com.recom.www.recommenderapp.Models.Home_Model;
 import com.recom.www.recommenderapp.R;
+import com.recom.www.recommenderapp.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +66,15 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
             }
         });
+        EditText search=rootview.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
         return rootview;
     }
 
