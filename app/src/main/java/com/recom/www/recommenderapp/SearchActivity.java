@@ -1,7 +1,10 @@
 package com.recom.www.recommenderapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.recom.www.recommenderapp.Adapters.CustomGridViewActivity;
@@ -20,6 +24,8 @@ import com.recom.www.recommenderapp.Models.User_Model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 public class SearchActivity extends AppCompatActivity {
     private List<Recent_Model> itemlist = new ArrayList<>();
@@ -62,6 +68,15 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        TextView cancel=findViewById(R.id.cancel);
+        TextView search=findViewById(R.id.search_action);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void prepareRecentData() {
@@ -80,4 +95,5 @@ public class SearchActivity extends AppCompatActivity {
 
 
     }
+
 }
