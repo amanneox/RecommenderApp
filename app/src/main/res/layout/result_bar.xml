@@ -28,7 +28,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="22dp"
+                android:padding="16dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_back"/>
             <EditText

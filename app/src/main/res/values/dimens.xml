@@ -10,6 +10,6 @@
 
     <dimen name="user_img">100dp</dimen>
 
-    <dimen name="search_img_h">120</dimen>
-    <dimen name="search_img_w">180</dimen>
+    <dimen name="search_img_h">120dp</dimen>
+    <dimen name="search_img_w">180dp</dimen>
 </resources>
