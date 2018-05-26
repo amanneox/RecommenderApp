@@ -9,4 +9,7 @@
     <dimen name="home_model_image">140dp</dimen>
 
     <dimen name="user_img">100dp</dimen>
+
+    <dimen name="search_img_h">120</dimen>
+    <dimen name="search_img_w">180</dimen>
 </resources>
