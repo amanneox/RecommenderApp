@@ -8,6 +8,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.LinearLayout;
+
 import com.recom.www.recommenderapp.Adapters.ResultAdapter;
 import com.recom.www.recommenderapp.Models.Recent_Model;
 import com.recom.www.recommenderapp.Models.Result_Model;
@@ -34,6 +36,8 @@ public class ResultActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         prepareResult();
+
+
 
     }
 
