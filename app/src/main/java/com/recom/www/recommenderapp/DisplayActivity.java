@@ -16,7 +16,8 @@ import android.view.ViewGroup;
 
 
 
-public class DisplayActivity extends AppCompatActivity {
+public class
+DisplayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
