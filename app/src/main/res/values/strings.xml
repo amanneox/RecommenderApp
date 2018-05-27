@@ -5,5 +5,6 @@
     <string name="recomnd" />
     <string name="Loginbutton_1">Continue with Facebook</string>
     <string name="Loginbutton_2">Continue with Google</string>
-    <string name="terms">By Continuing you accept our Terms and Conditions</string>
+    <string name="terms">By Continuing you accept our</string>
+    <string name="terms2">Terms and Conditions</string>
 </resources>
