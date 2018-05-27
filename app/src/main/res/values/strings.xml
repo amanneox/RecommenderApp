@@ -3,4 +3,7 @@
     <string name="user" />
     <string name="home" />
     <string name="recomnd" />
+    <string name="Loginbutton_1">Continue with Facebook</string>
+    <string name="Loginbutton_2">Continue with Google</string>
+    <string name="terms">By Continuing you accept our Terms and Conditions</string>
 </resources>

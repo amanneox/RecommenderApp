@@ -12,4 +12,9 @@
 
     <dimen name="search_img_h">120dp</dimen>
     <dimen name="search_img_w">180dp</dimen>
+
+    <dimen name="background_stretch">330dp</dimen>
+    <dimen name="drawable_padding">20dp</dimen>
+    <dimen name="overall_content_padding">15dp</dimen>
+    <dimen name="login_button_margins_top">22dp</dimen>
 </resources>
