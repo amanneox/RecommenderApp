@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState, persistentState);
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_login);
     }
 }
