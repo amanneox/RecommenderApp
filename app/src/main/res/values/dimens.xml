@@ -17,4 +17,7 @@
     <dimen name="drawable_padding">20dp</dimen>
     <dimen name="overall_content_padding">15dp</dimen>
     <dimen name="login_button_margins_top">22dp</dimen>
+
+    <dimen name="icon_h">100dp</dimen>
+    <dimen name="icon_w">100dp</dimen>
 </resources>
