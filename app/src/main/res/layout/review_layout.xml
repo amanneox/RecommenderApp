@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/row_padding_vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/row_padding_vertical"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/review_paddings"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/ic_user_default"
+                tools:ignore="ContentDescription" />
 
             <EditText
                 android:id="@+id/Text_Username"
@@ -28,7 +34,7 @@
                 android:inputType="textPersonName"
                 android:background="@color/colorWhite"
                 android:fontFamily="@font/neosansbold"
-                android:hint="@string/username"
+                android:hint="@string/app_name"
                 android:textColor="@color/colorGrey" />
 
         </LinearLayout>
@@ -54,7 +60,8 @@
                 android:layout_height="@dimen/review_textadd_height"
                 android:layout_gravity="center_horizontal"
                 android:inputType="text"
-                android:background="@drawable/edittext_background" />
+                android:background="@drawable/edittext_background"
+                tools:ignore="LabelFor" />
 
             <TextView
                 android:id="@+id/Text_Rating"
@@ -81,6 +88,7 @@
                 android:padding="@dimen/review_paddings"
                 android:text="@string/submit"
                 android:textAllCaps="false"
+                android:fontFamily="@font/neosansregular"
                 android:textColor="@color/colorWhite" />
 
         </LinearLayout>

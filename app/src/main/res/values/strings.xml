@@ -7,4 +7,7 @@
     <string name="Loginbutton_2">Continue with Google</string>
     <string name="terms">By Continuing you accept our</string>
     <string name="terms2">Terms and Conditions</string>
+    <string name="write_review">Write a review</string>
+    <string name="rating_text">Rating</string>
+    <string name="submit">Submit</string>
 </resources>
