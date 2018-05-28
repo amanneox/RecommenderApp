@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
     android:layout_marginTop="6dp"
     android:paddingBottom="@dimen/row_padding_vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -28,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="@string/username"
             android:fontFamily="@font/neosansmedium"
-            android:textColor="20sp"
+            android:textSize="20sp"
             android:padding="12dp"
             />
     </LinearLayout>
