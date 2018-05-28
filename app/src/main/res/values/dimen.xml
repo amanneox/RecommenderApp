@@ -13,7 +13,7 @@
     <dimen name="search_img_h">120dp</dimen>
     <dimen name="search_img_w">180dp</dimen>
 
-    <dimen name="background_stretch">330dp</dimen>
+    <dimen name="background_stretch">260dp</dimen>
     <dimen name="drawable_padding">20dp</dimen>
     <dimen name="overall_content_padding">15dp</dimen>
     <dimen name="login_button_margins_top">22dp</dimen>
@@ -21,8 +21,7 @@
     <dimen name="icon_h">100dp</dimen>
     <dimen name="icon_w">100dp</dimen>
 
-    <dimen name="review_paddings">14dp</dimen>
-    <dimen name="review_textadd_height">200dp</dimen>
-    <dimen name="review_textadd_width">360dp</dimen>
-    <dimen name="submit_button_margin">40dp</dimen>
+    <dimen name="view_page_h">200dp</dimen>
+
+    <dimen name="display_map_h">120dp</dimen>
 </resources>
