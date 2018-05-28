@@ -20,4 +20,8 @@
 
     <dimen name="icon_h">100dp</dimen>
     <dimen name="icon_w">100dp</dimen>
+
+    <dimen name="view_page_h">200dp</dimen>
+
+    <dimen name="display_map_h">120dp</dimen>
 </resources>
