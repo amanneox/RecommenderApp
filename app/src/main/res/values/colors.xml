@@ -9,4 +9,6 @@
 
     <color name="colorMaroon">#CA4B42</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="colorTextBox">#efefef</color>
 </resources>
