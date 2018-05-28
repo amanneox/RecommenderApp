@@ -11,4 +11,6 @@
     <color name="colorWhite">#FFFFFF</color>
 
     <color name="colorTextBox">#efefef</color>
+
+    <color name="colorBackBorder">#e4e4e4</color>
 </resources>
