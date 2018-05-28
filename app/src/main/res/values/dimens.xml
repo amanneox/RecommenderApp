@@ -34,5 +34,6 @@
     <dimen name="padding_text">16dp</dimen>
     <dimen name="floataction_size">60dp</dimen>
     <dimen name="margin_floataction">30dp</dimen>
-
+    <dimen name="user_thumb_h">32dp</dimen>
+    <dimen name="user_thumb_w">32dp</dimen>
 </resources>
