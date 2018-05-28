@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.recom.www.recommenderapp.Fragments.DisplayFragment;
 
 
 public class
@@ -39,6 +40,7 @@ DisplayActivity extends AppCompatActivity {
             layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
             iconView.setLayoutParams(layoutParams);
         }
+        loadFragment(new DisplayFragment());
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
