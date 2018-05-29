@@ -42,6 +42,7 @@ DisplayActivity extends AppCompatActivity {
             iconView.setLayoutParams(layoutParams);
         }
         loadFragment(new DisplayFragment());
+
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
