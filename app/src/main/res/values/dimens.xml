@@ -43,4 +43,6 @@
     <dimen name="contact_badge_margin">3dp</dimen>
     <dimen name="text_checkin_2">12sp</dimen>
     <dimen name="extra_margin">25dp</dimen>
+
+    <dimen name="check_mapview_h_">160dp</dimen>
 </resources>
