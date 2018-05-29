@@ -4,6 +4,7 @@
     android:paddingBottom="@dimen/row_padding_vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@color/colorWhite"
     android:paddingTop="@dimen/row_padding_vertical"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -23,17 +24,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/review_paddings"
+
                 android:src="@drawable/ic_user_default"
                 tools:ignore="ContentDescription" />
 
             <EditText
                 android:id="@+id/Text_Username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:inputType="text"
-                android:background="@color/colorWhite"
-                android:fontFamily="@font/neosansbold"
+                android:background="@drawable/text_fields"
+                android:fontFamily="@font/neosansregular"
                 android:hint="@string/app_name"
                 android:textColor="@color/colorGrey" />
 
@@ -54,32 +56,22 @@
                 android:padding="@dimen/review_paddings"
                 android:text="@string/write_review" />
 
-            <View
-                android:layout_height="2dp"
-                android:layout_width="match_parent"
-                android:background="@color/colorPrimary"/>
+
 
             <EditText
                 android:id="@+id/EditText_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:gravity="top|left"
+                android:background="@drawable/text_fields"
                 android:inputType="textMultiLine"
                 android:overScrollMode="always"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
-                android:lines="10"
-                android:layout_marginStart="@dimen/margin_edittext"
-                android:layout_marginEnd="@dimen/margin_edittext"
+                android:lines="6"
+                android:gravity="top|left"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:scrollHorizontally="false"
-                tools:ignore="LabelFor" />
-
-            <View
-                android:layout_height="2dp"
-                android:layout_width="match_parent"
-                android:background="@color/colorPrimary"/>
+                tools:ignore="LabelFor,RtlHardcoded" />
 
             <TextView
                 android:id="@+id/Text_Rating"
