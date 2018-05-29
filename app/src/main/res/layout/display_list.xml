@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
+    android:background="@drawable/background_review"
     android:layout_marginTop="6dp"
     android:paddingBottom="@dimen/row_padding_vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/row_padding_vertical"
-    >
+    android:paddingTop="@dimen/row_padding_vertical">
+
     <LinearLayout
         android:id="@+id/layout1"
         android:layout_width="wrap_content"
@@ -28,10 +28,11 @@
             android:layout_height="wrap_content"
             android:text="@string/username"
             android:fontFamily="@font/neosansmedium"
-            android:textColor="20sp"
-            android:padding="12dp"
-            />
+            android:textSize="20sp"
+            android:padding="12dp" />
+
     </LinearLayout>
+
     <RatingBar
         android:id="@+id/user_rating"
         android:layout_below="@id/layout1"
@@ -41,13 +42,14 @@
         android:progressTint="@color/colorPrimary"
         android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/review"
-            android:layout_below="@id/user_rating"
-            android:layout_width="wrap_content"
-            android:text="@string/app_name"
-            android:fontFamily="@font/neosansregular"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/review"
+        android:layout_below="@id/user_rating"
+        android:layout_width="wrap_content"
+        android:text="@string/app_name"
+        android:fontFamily="@font/neosansregular"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/votes"
         android:layout_below="@id/review"
@@ -56,35 +58,37 @@
         android:gravity="end"
         android:layout_alignParentEnd="true"
         android:layout_height="wrap_content">
+
         <ImageButton
             android:id="@+id/like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_like"
             android:padding="12dp"
-            android:background="@android:color/transparent"
-            />
+            android:background="@android:color/transparent" />
+
         <TextView
             android:id="@+id/like_count"
             android:padding="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="123"
-            />
+            android:text="123" />
+
         <ImageButton
             android:id="@+id/dislike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dislike"
             android:padding="12dp"
-            android:background="@android:color/transparent"
-            />
+            android:background="@android:color/transparent" />
+
         <TextView
             android:id="@+id/dislike_count"
             android:padding="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="123"
-            />
+            android:text="123" />
+
     </LinearLayout>
+
 </RelativeLayout>

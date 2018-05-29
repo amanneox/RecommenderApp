@@ -36,4 +36,12 @@
     <dimen name="margin_floataction">30dp</dimen>
     <dimen name="user_thumb_h">32dp</dimen>
     <dimen name="user_thumb_w">32dp</dimen>
+
+    <dimen name="margin_checkins">14dp</dimen>
+    <dimen name="image_checkin_height">200dp</dimen>
+    <dimen name="text_checkin">20sp</dimen>
+    <dimen name="service_name_margin">10sp</dimen>
+    <dimen name="contact_badge_margin">3dp</dimen>
+    <dimen name="text_checkin_2">12sp</dimen>
+    <dimen name="extra_margin">25dp</dimen>
 </resources>
