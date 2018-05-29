@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.recom.www.recommenderapp.Fragments.CheckInFragment;
 import com.recom.www.recommenderapp.Fragments.DisplayFragment;
 import com.recom.www.recommenderapp.Fragments.ReviewFragment;
 
@@ -51,18 +52,19 @@ DisplayActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
             switch (item.getItemId()) {
+                case R.id.destination:
+                    fragment=new DisplayFragment();
+                    loadFragment(fragment);
+                    return true;
                 case R.id.checkin:
-                    //fragment = new HomeFragment();
-                    //loadFragment(fragment);
+                    fragment = new CheckInFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.write_review:
                     fragment=new ReviewFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.bookmark:
-                    //fragment = new ProfileFragment();
-                    //loadFragment(fragment);
-                    return true;
+
                 case  R.id.add_photo:
                     return true;
             }
