@@ -54,14 +54,32 @@
                 android:padding="@dimen/review_paddings"
                 android:text="@string/write_review" />
 
+            <View
+                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"/>
+
             <EditText
                 android:id="@+id/EditText_1"
-                android:layout_width="@dimen/review_textadd_width"
-                android:layout_height="@dimen/review_textadd_height"
-                android:layout_gravity="center_horizontal"
-                android:inputType="text"
-                android:background="@drawable/edittext_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:lines="10"
+                android:layout_marginStart="@dimen/margin_edittext"
+                android:layout_marginEnd="@dimen/margin_edittext"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:scrollHorizontally="false"
                 tools:ignore="LabelFor" />
+
+            <View
+                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"/>
 
             <TextView
                 android:id="@+id/Text_Rating"
