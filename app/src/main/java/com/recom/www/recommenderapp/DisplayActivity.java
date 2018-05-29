@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.recom.www.recommenderapp.Fragments.DisplayFragment;
+import com.recom.www.recommenderapp.Fragments.ReviewFragment;
 
 
 public class
@@ -54,6 +55,8 @@ DisplayActivity extends AppCompatActivity {
                     //loadFragment(fragment);
                     return true;
                 case R.id.write_review:
+                    fragment=new ReviewFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.bookmark:
                     //fragment = new ProfileFragment();
