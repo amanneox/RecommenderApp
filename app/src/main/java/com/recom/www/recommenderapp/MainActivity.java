@@ -8,6 +8,7 @@ import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,7 @@ import com.recom.www.recommenderapp.Fragments.ProfileFragment;
 public class MainActivity extends AppCompatActivity {
 
     private ActionBar toolbar;
-
+    private FragmentManager fm=getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         loadFragment(new HomeFragment());
 
+
+
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigation.getChildAt(0);
         for (int i = 0; i < menuView.getChildCount(); i++) {
             final View iconView = menuView.getChildAt(i).findViewById(android.support.design.R.id.icon);
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
             iconView.setLayoutParams(layoutParams);
         }
+
 
     }
 
@@ -79,9 +83,12 @@ public class MainActivity extends AppCompatActivity {
     };
     private void loadFragment(Fragment fragment) {
         // load fragment
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
+        //transaction.addToBackStack(null);
         transaction.commit();
     }
+
+
 }

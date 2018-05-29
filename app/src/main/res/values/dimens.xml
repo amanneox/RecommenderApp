@@ -26,8 +26,7 @@
     <dimen name="display_map_h">120dp</dimen>
 
     <dimen name="review_paddings">12dp</dimen>
-    <dimen name="review_textadd_width">360dp</dimen>
-    <dimen name="review_textadd_height">200dp</dimen>
+    <dimen name="margin_edittext">5dp</dimen>
     <dimen name="submit_button_margin">20dp</dimen>
 
     <dimen name="font_size">24sp</dimen>
@@ -36,4 +35,14 @@
     <dimen name="margin_floataction">30dp</dimen>
     <dimen name="user_thumb_h">32dp</dimen>
     <dimen name="user_thumb_w">32dp</dimen>
+
+    <dimen name="margin_checkins">14dp</dimen>
+    <dimen name="image_checkin_height">200dp</dimen>
+    <dimen name="text_checkin">20sp</dimen>
+    <dimen name="service_name_margin">10sp</dimen>
+    <dimen name="contact_badge_margin">3dp</dimen>
+    <dimen name="text_checkin_2">12sp</dimen>
+    <dimen name="extra_margin">25dp</dimen>
+
+    <dimen name="check_mapview_h_">160dp</dimen>
 </resources>

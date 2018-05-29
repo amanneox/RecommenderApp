@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingBottom="@dimen/row_padding_vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/row_padding_vertical"
+    android:background="@color/colorWhite"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <include
+        android:id="@+id/custombar"
+        layout="@layout/display_bar" />
+
 
     <RelativeLayout
+        android:layout_below="@id/custombar"
         android:id="@+id/RelativeLay_1"
+        android:paddingBottom="@dimen/row_padding_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/row_padding_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:id="@+id/LinearLay_1"
@@ -23,17 +30,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/review_paddings"
+
                 android:src="@drawable/ic_user_default"
                 tools:ignore="ContentDescription" />
 
             <EditText
                 android:id="@+id/Text_Username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:inputType="textPersonName"
-                android:background="@color/colorWhite"
-                android:fontFamily="@font/neosansbold"
+                android:inputType="text"
+                android:background="@drawable/text_fields"
+                android:fontFamily="@font/neosansregular"
                 android:hint="@string/app_name"
                 android:textColor="@color/colorGrey" />
 
@@ -54,14 +62,22 @@
                 android:padding="@dimen/review_paddings"
                 android:text="@string/write_review" />
 
+
+
             <EditText
                 android:id="@+id/EditText_1"
-                android:layout_width="@dimen/review_textadd_width"
-                android:layout_height="@dimen/review_textadd_height"
-                android:layout_gravity="center_horizontal"
-                android:inputType="text"
-                android:background="@drawable/edittext_background"
-                tools:ignore="LabelFor" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_fields"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:lines="6"
+                android:gravity="top|left"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:scrollHorizontally="false"
+                tools:ignore="LabelFor,RtlHardcoded" />
 
             <TextView
                 android:id="@+id/Text_Rating"
@@ -76,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:isIndicator="false"
+                android:progressTint="@color/colorPrimary"
                 android:stepSize="0.5" />
 
             <Button
@@ -95,4 +112,4 @@
 
     </RelativeLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
