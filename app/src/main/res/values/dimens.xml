@@ -45,4 +45,6 @@
     <dimen name="extra_margin">25dp</dimen>
 
     <dimen name="check_mapview_h_">160dp</dimen>
+
+    <dimen name="nearby_img_h">150dp</dimen>
 </resources>
