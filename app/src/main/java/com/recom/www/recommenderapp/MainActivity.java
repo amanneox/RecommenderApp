@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.recom.www.recommenderapp.Fragments.HomeFragment;
+import com.recom.www.recommenderapp.Fragments.NearbyFragment;
 import com.recom.www.recommenderapp.Fragments.ProfileFragment;
 
 
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_nearby:
+                    fragment=new NearbyFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_user:
                     fragment = new ProfileFragment();
