@@ -28,6 +28,7 @@ public class NearbyFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.nearby_view, container, false);
         mAdapter = new NearbyAdapter(itemlist);
+        RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_nearby);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -37,7 +38,13 @@ public class NearbyFragment extends Fragment {
     }
 
     private void prepareNearbyData() {
-        Nearby_Model item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f);
+        Nearby_Model item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://www.tropical-islands.de/fileadmin/_processed_/csm_TI_RESTAURANT_TROPICAL-GARDEN1_RGB_2000x860_c3a4238088.jpg");
+        itemlist.add(item);
+        item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://mk0tainsights9mcv7wv.kinstacdn.com/wp-content/uploads/2018/01/premiumforrestaurants_0.jpg");
+        itemlist.add(item);
+        item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://mk0tainsights9mcv7wv.kinstacdn.com/wp-content/uploads/2018/01/premiumforrestaurants_0.jpg");
+        itemlist.add(item);
+        item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://www.tropical-islands.de/fileadmin/_processed_/csm_TI_RESTAURANT_TROPICAL-GARDEN1_RGB_2000x860_c3a4238088.jpg");
         itemlist.add(item);
     }
 }

@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.Models.Recent_Model;
 import com.recom.www.recommenderapp.R;
@@ -21,6 +23,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name,value,genre;
         public RatingBar rating;
+        public ImageView img;
 
         public MyViewHolder(View view) {
             super(view);
@@ -28,6 +31,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
             value=view.findViewById(R.id.value);
             genre=view.findViewById(R.id.genre);
             rating=view.findViewById(R.id.ratingbar);
+            img=view.findViewById(R.id.pager);
         }
     }
 
@@ -47,10 +51,18 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Nearby_Model item = itemlist.get(position);
-        //holder.name.setText(item.getName());
+        holder.name.setText(item.getName());
         holder.rating.setRating(item.getRating());
         holder.genre.setText(item.getGenre());
         holder.value.setText(item.getValue());
+        Glide.with(holder.img.getContext())
+                .load(item.getImgUrl())
+                .apply(new RequestOptions()
+
+                        .centerCrop()
+                )
+                .into(holder.img);
+
     }
 
     @Override
