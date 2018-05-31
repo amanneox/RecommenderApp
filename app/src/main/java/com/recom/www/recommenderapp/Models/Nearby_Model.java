@@ -1,17 +1,26 @@
 package com.recom.www.recommenderapp.Models;
 
 public class Nearby_Model {
-    private String name,value,genre;
+    private String name,value,genre,imgUrl;
     private float rating;
 
     public Nearby_Model() {
     }
 
-    public  Nearby_Model(String name,String value,String genre,float rating){
+    public  Nearby_Model(String name,String value,String genre,float rating,String imgUrl){
         this.name=name;
         this.genre=genre;
         this.value=value;
         this.rating=rating;
+        this.imgUrl=imgUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public String getGenre() {
