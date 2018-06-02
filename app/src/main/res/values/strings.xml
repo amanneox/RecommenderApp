@@ -126,4 +126,23 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="action_settings_headers">Settings with Headers</string>
 
+    <!-- Strings for Intro Slides -->
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello Everyone!</string>
+    <string name="slide_1_desc">Welcome to RecommendationApp</string>
+
+    <string name="slide_2_title">Movies</string>
+    <string name="slide_2_desc">Find the best Movies Recommendations and the best place to watch!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Get Awesome discounts with every 100 Recommendations!</string>
+
+    <string name="slide_4_title">Travel</string>
+    <string name="slide_4_desc">Explore the best of the best places to travel!</string>
+
 </resources>
