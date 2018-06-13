@@ -1,7 +1,17 @@
 package com.recom.www.recommenderapp.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Nearby_Model {
-    private String name,value,genre,imgUrl;
+    @SerializedName("name")
+    private String name;
+    @SerializedName("value")
+    private String value;
+    @SerializedName("genre")
+    private String genre;
+    @SerializedName("image")
+    private String imgUrl;
+    @SerializedName("rating")
     private float rating;
 
     public Nearby_Model() {
