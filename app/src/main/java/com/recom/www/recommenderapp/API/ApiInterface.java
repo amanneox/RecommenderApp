@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
     @GET("api/items")
-    Call<Nearby_Model> getTopRatedMovies(@Query("api_key") String apiKey);
+    Call<Nearby_Model> getNearbyItems();
 /*
     @GET("movie/{id}")
     Call<MoviesResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
