@@ -6,10 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.recom.www.recommenderapp.API.ApiClient;
+import com.recom.www.recommenderapp.API.ApiInterface;
 import com.recom.www.recommenderapp.Adapters.NearbyAdapter;
 import com.recom.www.recommenderapp.Adapters.ReviewAdapter;
 import com.recom.www.recommenderapp.Models.Nearby_Model;
@@ -18,6 +21,11 @@ import com.recom.www.recommenderapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NearbyFragment extends Fragment {
     private List<Nearby_Model> itemlist = new ArrayList<>();
@@ -28,11 +36,37 @@ public class NearbyFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.nearby_view, container, false);
         mAdapter = new NearbyAdapter(itemlist);
-        RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_nearby);
+        final RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_nearby);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
+
+        ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+
+        Call<Nearby_Model> call = apiService.getNearbyItems();
+        call.enqueue(new Callback<Nearby_Model>() {
+            String TAG;
+             
+            @Override
+            public void onResponse(Call<Nearby_Model> call, Response<Nearby_Model> response) {
+                int statusCode = response.code();
+                Log.d(TAG, "onResponse: "+response.body()+"\t"+statusCode);
+              //  List<Nearby_Model> items = response.body().getResults();
+            }
+
+            @Override
+            public void onFailure(Call<Nearby_Model> call, Throwable t) {
+                // Log error here since request failed
+                Log.e(TAG, t.toString());
+            }
+        });
+
+
+
+
         prepareNearbyData();
         return rootview;
     }
