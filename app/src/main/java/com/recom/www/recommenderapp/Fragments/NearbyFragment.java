@@ -10,11 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.recom.www.recommenderapp.API.ApiClient;
 import com.recom.www.recommenderapp.API.ApiInterface;
 import com.recom.www.recommenderapp.Adapters.NearbyAdapter;
 import com.recom.www.recommenderapp.Adapters.ReviewAdapter;
+import com.recom.www.recommenderapp.Models.ApiResponse;
 import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.Models.Review_Model;
 import com.recom.www.recommenderapp.R;
@@ -26,6 +28,8 @@ import java.util.logging.Logger;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class NearbyFragment extends Fragment {
     private List<Nearby_Model> itemlist = new ArrayList<>();
@@ -46,24 +50,20 @@ public class NearbyFragment extends Fragment {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<Nearby_Model> call = apiService.getNearbyItems();
-        call.enqueue(new Callback<Nearby_Model>() {
-            String TAG;
-             
+        Call<ApiResponse> call = apiService.getNearbyItems();
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<Nearby_Model> call, Response<Nearby_Model> response) {
-                int statusCode = response.code();
-                Log.d(TAG, "onResponse: "+response.body()+"\t"+statusCode);
-              //  List<Nearby_Model> items = response.body().getResults();
+            public void onResponse(Call<ApiResponse>call, Response<ApiResponse> response) {
+                List<Nearby_Model> items = response.body().getResults();
+                Log.d(TAG, "Number of items received: " + items.size());
             }
 
             @Override
-            public void onFailure(Call<Nearby_Model> call, Throwable t) {
+            public void onFailure(Call<ApiResponse>call, Throwable t) {
                 // Log error here since request failed
                 Log.e(TAG, t.toString());
             }
         });
-
 
 
 

@@ -2,6 +2,8 @@ package com.recom.www.recommenderapp.Models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Nearby_Model {
     @SerializedName("name")
     private String name;
@@ -13,7 +15,8 @@ public class Nearby_Model {
     private String imgUrl;
     @SerializedName("rating")
     private float rating;
-
+    @SerializedName("results")
+    private List<Nearby_Model> results;
     public Nearby_Model() {
     }
 
