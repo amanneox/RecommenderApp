@@ -1,5 +1,6 @@
 package com.recom.www.recommenderapp.Fragments;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -50,16 +51,17 @@ public class NearbyFragment extends Fragment {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<ApiResponse> call = apiService.getNearbyItems();
-        call.enqueue(new Callback<ApiResponse>() {
+        Call<List<ApiResponse>> call = apiService.getNearbyItems();
+        call.enqueue(new Callback<List<ApiResponse>>() {
             @Override
-            public void onResponse(Call<ApiResponse>call, Response<ApiResponse> response) {
-                List<Nearby_Model> items = response.body().getResults();
+            public void onResponse(Call<List<ApiResponse>>call, Response<List<ApiResponse>> response) {
+                List<ApiResponse> items = response.body();
                 Log.d(TAG, "Number of items received: " + items.size());
+                Log.d(TAG,"Response"+ response.body());
             }
 
             @Override
-            public void onFailure(Call<ApiResponse>call, Throwable t) {
+            public void onFailure(Call<List<ApiResponse>>call, Throwable t) {
                 // Log error here since request failed
                 Log.e(TAG, t.toString());
             }
