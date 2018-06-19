@@ -9,14 +9,27 @@ public class Nearby_Model {
     private String name;
     @SerializedName("value")
     private String value;
-    @SerializedName("genre")
+    @SerializedName("category")
     private String genre;
-    @SerializedName("image")
+    @SerializedName("img_url")
     private String imgUrl;
     @SerializedName("rating")
     private float rating;
+    @SerializedName("address")
+    private String address;
+
     @SerializedName("results")
     private List<Nearby_Model> results;
+
+    public List<Nearby_Model> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Nearby_Model> results) {
+        this.results = results;
+    }
+
+
     public Nearby_Model() {
     }
 
