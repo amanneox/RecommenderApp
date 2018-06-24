@@ -1,6 +1,9 @@
 package com.recom.www.recommenderapp.Fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -58,12 +61,14 @@ public class NearbyFragment extends Fragment {
                 Iterator<Nearby_Model> it=items.iterator();
                 Gson gson = new Gson();
 
-                while (it.hasNext()){
-                    String x=gson.toJson(it.next());
-                    JsonObject jsonObject = gson.fromJson( x, JsonObject.class);
+                while (it.hasNext()) {
+                    String x = gson.toJson(it.next());
+                    JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
                     jsonlist.add(jsonObject);
+
                     it.remove();
                 }
+                prepareNearbyData();
             }
 
             @Override
@@ -74,21 +79,29 @@ public class NearbyFragment extends Fragment {
         });
 
 
-        prepareNearbyData();
+
 
         return rootview;
     }
     private void prepareNearbyData() {
-        Log.i(TAG, "Inside function");
-        for (JsonObject jsonObject : jsonlist) {
-            String name = String.valueOf(jsonObject.get("name"));
-            String address = String.valueOf(jsonObject.get("address"));
-            String img_url = String.valueOf(jsonObject.get("img_url"));
-            String category = String.valueOf(jsonObject.get("category"));
-            String value = String.valueOf(jsonObject.get("value"));
-            Float rating = Float.valueOf(String.valueOf(jsonObject.get("rating")));
-            Nearby_Model item = new Nearby_Model(name, value, category, rating, "https://www.tropical-islands.de/fileadmin/_processed_/csm_TI_RESTAURANT_TROPICAL-GARDEN1_RGB_2000x860_c3a4238088.jpg");
-            itemlist.add(item);
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                for (JsonObject jsonObject : jsonlist) {
+                    Log.i(TAG,""+jsonObject);
+                    String name = String.valueOf(jsonObject.get("name"));
+                    String address = String.valueOf(jsonObject.get("address"));
+                    String img_url = String.valueOf(jsonObject.get("img_url"));
+                    String category = String.valueOf(jsonObject.get("category"));
+                    String value = String.valueOf(jsonObject.get("value"));
+                    Float rating = Float.valueOf(String.valueOf(jsonObject.get("rating")));
+                    Nearby_Model item = new Nearby_Model(name, value, category, rating, "https://www.tropical-islands.de/fileadmin/_processed_/csm_TI_RESTAURANT_TROPICAL-GARDEN1_RGB_2000x860_c3a4238088.jpg");
+                    itemlist.add(item);
+                }
+            }
+        });
+
+
         }
 
 
@@ -102,4 +115,5 @@ public class NearbyFragment extends Fragment {
         itemlist.add(item);
         */
     }
-}
+
+
