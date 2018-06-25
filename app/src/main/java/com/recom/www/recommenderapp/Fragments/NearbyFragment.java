@@ -19,12 +19,14 @@ import com.google.gson.JsonObject;
 import com.recom.www.recommenderapp.API.ApiClient;
 import com.recom.www.recommenderapp.API.ApiInterface;
 import com.recom.www.recommenderapp.Adapters.NearbyAdapter;
+import com.recom.www.recommenderapp.MainActivity;
 import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.R;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,12 +43,12 @@ public class NearbyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.nearby_view, container, false);
-        mAdapter = new NearbyAdapter(itemlist);
+       // mAdapter = new NearbyAdapter(j);
         final RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_nearby);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        //recyclerView.setAdapter(mAdapter);
 
 
         ApiInterface apiService =
@@ -65,10 +67,11 @@ public class NearbyFragment extends Fragment {
                     String x = gson.toJson(it.next());
                     JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
                     jsonlist.add(jsonObject);
-
                     it.remove();
                 }
-                prepareNearbyData();
+
+                recyclerView.setAdapter(new NearbyAdapter(jsonlist, R.layout.nearby_list, getContext()));
+
             }
 
             @Override
@@ -79,41 +82,9 @@ public class NearbyFragment extends Fragment {
         });
 
 
-
-
         return rootview;
     }
-    private void prepareNearbyData() {
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                for (JsonObject jsonObject : jsonlist) {
-                    Log.i(TAG,""+jsonObject);
-                    String name = String.valueOf(jsonObject.get("name"));
-                    String address = String.valueOf(jsonObject.get("address"));
-                    String img_url = String.valueOf(jsonObject.get("img_url"));
-                    String category = String.valueOf(jsonObject.get("category"));
-                    String value = String.valueOf(jsonObject.get("value"));
-                    Float rating = Float.valueOf(String.valueOf(jsonObject.get("rating")));
-                    Nearby_Model item = new Nearby_Model(name, value, category, rating, "https://www.tropical-islands.de/fileadmin/_processed_/csm_TI_RESTAURANT_TROPICAL-GARDEN1_RGB_2000x860_c3a4238088.jpg");
-                    itemlist.add(item);
-                }
-            }
-        });
 
-
-        }
-
-
-       /* Nearby_Model item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://www.tropical-islands.de/fileadmin/_processed_/csm_TI_RESTAURANT_TROPICAL-GARDEN1_RGB_2000x860_c3a4238088.jpg");
-        itemlist.add(item);
-        item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://mk0tainsights9mcv7wv.kinstacdn.com/wp-content/uploads/2018/01/premiumforrestaurants_0.jpg");
-        itemlist.add(item);
-        item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://mk0tainsights9mcv7wv.kinstacdn.com/wp-content/uploads/2018/01/premiumforrestaurants_0.jpg");
-        itemlist.add(item);
-        item=new Nearby_Model("Dominos","9/10","Pizza/Food",3.5f,"https://www.tropical-islands.de/fileadmin/_processed_/csm_TI_RESTAURANT_TROPICAL-GARDEN1_RGB_2000x860_c3a4238088.jpg");
-        itemlist.add(item);
-        */
     }
 
 

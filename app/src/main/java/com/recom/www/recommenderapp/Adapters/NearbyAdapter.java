@@ -1,5 +1,6 @@
 package com.recom.www.recommenderapp.Adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.JsonObject;
 import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.Models.Recent_Model;
 import com.recom.www.recommenderapp.R;
@@ -18,7 +20,16 @@ import java.util.List;
 
 public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHolder> {
 
+    private final List<JsonObject> jsonlist;
+    private final Context context;
     private List<Nearby_Model> itemlist;
+
+    public NearbyAdapter(List<JsonObject> jsonlist, int nearby_list, Context context) {
+        this.jsonlist = jsonlist;
+       // this.rowLayout = rowLayout;
+        this.context = context;
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name,value,genre;
@@ -36,9 +47,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
     }
 
 
-    public NearbyAdapter(List<Nearby_Model> itemlist) {
-        this.itemlist = itemlist;
-    }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,13 +59,13 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Nearby_Model item = itemlist.get(position);
-        holder.name.setText(item.getName());
-        holder.rating.setRating(item.getRating());
-        holder.genre.setText(item.getGenre());
-        holder.value.setText(item.getValue());
+        JsonObject item = jsonlist.get(position);
+        holder.name.setText(String.valueOf(item.get("name")));
+        holder.rating.setRating(Float.valueOf(String.valueOf(item.get("rating"))));
+        holder.genre.setText(String.valueOf(item.get("category")));
+        holder.value.setText( String.valueOf(item.get("value")));
         Glide.with(holder.img.getContext())
-                .load(item.getImgUrl())
+                .load(String.valueOf(item.get("img_url")))
                 .apply(new RequestOptions()
 
                         .centerCrop()
@@ -67,6 +76,6 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return itemlist.size();
+        return jsonlist.size();
     }
 }
