@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
     GridView androidGridView;
@@ -92,7 +95,8 @@ public class HomeFragment extends Fragment {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<List<Home_Model>> call = apiService.getItems();
+
+        Call<List<Home_Model>> call = apiService.getItems("Food",32,78,200.0F);
         call.enqueue(new Callback<List<Home_Model>>() {
             @Override
             public void onResponse(Call<List<Home_Model>>call, Response<List<Home_Model>> response) {
@@ -107,7 +111,7 @@ public class HomeFragment extends Fragment {
                     jsonlist.add(jsonObject);
                     it.remove();
                 }
-
+                Log.i(TAG,":"+jsonlist);
                // recyclerView.setAdapter(new NearbyAdapter(jsonlist, R.layout.nearby_list, getContext()));
 
             }
