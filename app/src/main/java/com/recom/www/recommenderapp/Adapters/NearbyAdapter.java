@@ -65,7 +65,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
         holder.genre.setText(String.valueOf(item.get("category")));
         holder.value.setText( String.valueOf(item.get("value")));
         Glide.with(holder.img.getContext())
-                .load(String.valueOf(item.get("img_url")))
+                .load(item.get("img_url"))
                 .apply(new RequestOptions()
 
                         .centerCrop()
