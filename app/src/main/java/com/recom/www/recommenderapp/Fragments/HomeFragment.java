@@ -17,19 +17,31 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.recom.www.recommenderapp.API.ApiClient;
+import com.recom.www.recommenderapp.API.ApiInterface;
 import com.recom.www.recommenderapp.Adapters.CustomGridViewActivity;
 import com.recom.www.recommenderapp.Adapters.HomeAdapter;
+import com.recom.www.recommenderapp.Adapters.NearbyAdapter;
 import com.recom.www.recommenderapp.Models.Home_Model;
+import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.R;
 import com.recom.www.recommenderapp.SearchActivity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     GridView androidGridView;
     private List<Home_Model> itemlist = new ArrayList<>();
     private RecyclerView recyclerView;
+    List<JsonObject> jsonlist=new ArrayList<>();
     private HomeAdapter mAdapter;
     String[] gridViewString = {
             "Food", "Shopping", "Hot&New", "Delivery", "Bars", "Coffee",
@@ -75,6 +87,38 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+
+        Call<List<Home_Model>> call = apiService.getItems();
+        call.enqueue(new Callback<List<Home_Model>>() {
+            @Override
+            public void onResponse(Call<List<Home_Model>>call, Response<List<Home_Model>> response) {
+                int statusCode = response.code();
+                List<Home_Model> items = response.body();
+                Iterator<Home_Model> it=items.iterator();
+                Gson gson = new Gson();
+
+                while (it.hasNext()) {
+                    String x = gson.toJson(it.next());
+                    JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
+                    jsonlist.add(jsonObject);
+                    it.remove();
+                }
+
+               // recyclerView.setAdapter(new NearbyAdapter(jsonlist, R.layout.nearby_list, getContext()));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Home_Model>> call, Throwable t) {
+
+            }
+
+        });
+
         return rootview;
     }
 
