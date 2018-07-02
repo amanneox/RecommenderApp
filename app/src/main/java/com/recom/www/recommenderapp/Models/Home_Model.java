@@ -7,11 +7,36 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.annotations.SerializedName;
 import com.recom.www.recommenderapp.BR;
 
+import java.util.List;
+
 public class Home_Model extends BaseObservable {
-    private String title, genre, name,price,imgUrl,mile;
+    @SerializedName("title")
+    private String title;
+    @SerializedName("genre")
+    private String genre;
+    @SerializedName("name")
+    private String name;
+    @SerializedName("price")
+    private String price;
+    @SerializedName("imgUrl")
+    private String imgUrl;
+    @SerializedName("mile")
+    private String mile;
+    @SerializedName("rating")
     private int rating;
+    @SerializedName("results")
+    private List<Nearby_Model> results;
+
+    public List<Nearby_Model> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Nearby_Model> results) {
+        this.results = results;
+    }
 
     public Home_Model() {
     }
