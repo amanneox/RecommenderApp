@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
                 ApiClient.getClient().create(ApiInterface.class);
 
 
-        Call<List<Home_Model>> call = apiService.getItems("Food",32,78,200.0F);
+        Call<List<Home_Model>> call = apiService.getitemloc("Food",32,78,200.0F);
         call.enqueue(new Callback<List<Home_Model>>() {
             @Override
             public void onResponse(Call<List<Home_Model>>call, Response<List<Home_Model>> response) {

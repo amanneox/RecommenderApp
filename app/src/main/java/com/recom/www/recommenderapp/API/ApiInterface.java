@@ -7,9 +7,7 @@ import com.recom.www.recommenderapp.Models.Nearby_Model;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -19,7 +17,10 @@ public interface ApiInterface {
     Call<List<Nearby_Model>> getNearbyItems();
 
     @POST("api/items/loc/")
-    FooResponse postJson(@Body FooRequest body);
+    Call<List<Home_Model>> getitemloc(@Field("category") String category,
+                        @Field("range") int range,
+                          @Field("lng") int lng,
+                        @Field("lat") float lat);
 
 /*
     @GET("movie/{id}")

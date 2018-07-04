@@ -7,12 +7,34 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.recom.www.recommenderapp.BR;
 
 import java.util.List;
 
 public class Home_Model extends BaseObservable {
+
+
+    @SerializedName("category")
+    @Expose
+    private
+    String category;
+    @SerializedName("range")
+    @Expose
+    private
+    int range;
+    @SerializedName("lat")
+    @Expose
+    private
+    float lat;
+    @SerializedName("lng")
+    @Expose
+    private
+    float lng;
+
+
+
     @SerializedName("title")
     private String title;
     @SerializedName("genre")
@@ -41,7 +63,7 @@ public class Home_Model extends BaseObservable {
     public Home_Model() {
     }
 
-    public Home_Model(String title, String genre, String name,String price,int rating,String imgUrl,String mile) {
+    public Home_Model(String title, String genre, String name,String price,int rating,String imgUrl,String mile,String category,int range,float lat,float lng) {
         this.title = title;
         this.genre = genre;
         this.name = name;
@@ -49,6 +71,11 @@ public class Home_Model extends BaseObservable {
         this.rating=rating;
         this.imgUrl=imgUrl;
         this.mile=mile;
+
+        this.lat=lat;
+        this.lng=lng;
+        this.category=category;
+        this.range=range;
     }
 
     @BindingAdapter({"imgUrl"})
@@ -57,7 +84,37 @@ public class Home_Model extends BaseObservable {
                 .load(imageUrl)
                 .into(view);
     }
+    public float getLat() {
+        return lat;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setLat(float lat) {
+        this.lat = lat;
+    }
+
+    public void setLng(float lng) {
+        this.lng = lng;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public float getLng() {
+        return lng;
+    }
+
+    public String getCategory() {
+        return category;
+    }
     public String getMile() {
         return mile;
     }
