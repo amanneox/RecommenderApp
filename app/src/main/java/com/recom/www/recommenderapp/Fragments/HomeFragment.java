@@ -1,6 +1,7 @@
 package com.recom.www.recommenderapp.Fragments;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -61,15 +62,15 @@ public class HomeFragment extends Fragment {
 
 
         View rootview=inflater.inflate(R.layout.home_view, container, false);
-       RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_home);
+       final RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_home);
 
-        mAdapter = new HomeAdapter(itemlist);
+       // mAdapter = new HomeAdapter(itemlist);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+       // recyclerView.setAdapter(mAdapter);
 
-        prepareMovieData();
+        //prepareMovieData();
         CustomGridViewActivity adapterViewAndroid = new CustomGridViewActivity(getContext(), gridViewString, gridViewImageId);
         androidGridView=(GridView)rootview.findViewById(R.id.grid_view_image_text);
         androidGridView.setAdapter(adapterViewAndroid);
@@ -96,24 +97,28 @@ public class HomeFragment extends Fragment {
                 ApiClient.getClient().create(ApiInterface.class);
 
 
-        Call<List<Home_Model>> call = apiService.getItems("Food",32,78,200.0F);
+        Call<List<Home_Model>> call = apiService.getitemloc("Food",32,78,200.0F);
         call.enqueue(new Callback<List<Home_Model>>() {
             @Override
             public void onResponse(Call<List<Home_Model>>call, Response<List<Home_Model>> response) {
                 int statusCode = response.code();
-                List<Home_Model> items = response.body();
-                Iterator<Home_Model> it=items.iterator();
-                Gson gson = new Gson();
-
-                while (it.hasNext()) {
-                    String x = gson.toJson(it.next());
-                    JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
-                    jsonlist.add(jsonObject);
-                    it.remove();
+                if (response.isSuccessful()) {
+                    List<Home_Model> items = response.body();
+                    Iterator<Home_Model> it = items.iterator();
+                    Gson gson = new Gson();
+                    Log.i(TAG,"Success:"+statusCode);
+                    while (it.hasNext()) {
+                        String x = gson.toJson(it.next());
+                        JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
+                        jsonlist.add(jsonObject);
+                        it.remove();
+                    }
+                     Log.i(TAG, ":" + jsonlist);
+                     recyclerView.setAdapter(new HomeAdapter(jsonlist));
                 }
-                Log.i(TAG,":"+jsonlist);
-               // recyclerView.setAdapter(new NearbyAdapter(jsonlist, R.layout.nearby_list, getContext()));
-
+                else {
+                    Log.i(TAG,"Error:"+statusCode);
+                }
             }
 
             @Override
@@ -126,32 +131,6 @@ public class HomeFragment extends Fragment {
         return rootview;
     }
 
-    private void prepareMovieData() {
-        Home_Model  item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","600",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
-        itemlist.add(item);
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","500",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
-        itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
-        itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://i.ytimg.com/vi/1X6OAucemtE/maxresdefault.jpg","15miles");
-        itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
-        itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "2015","",1,"","");
-        itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
-        itemlist.add(item);
-
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
-        itemlist.add(item);
-        item = new Home_Model("Mad Max: Fury Road", "Action & Adventure", "Pizza hut","",1,"https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","15miles");
-        itemlist.add(item);
-    }
 
 
     @Override
