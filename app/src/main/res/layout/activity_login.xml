@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/login_button_margins_top"
+                android:visibility="gone"
                 android:background="@drawable/button"
                 android:backgroundTint="#4267B2"
                 android:drawableStart="@drawable/ic_facebook_color"
@@ -47,6 +48,13 @@
                 android:textColor="@color/colorWhite"
                 android:padding="@dimen/overall_content_padding"/>
 
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp" />
             <Button
                 android:id="@+id/button_2"
                 android:layout_width="wrap_content"

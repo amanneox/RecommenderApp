@@ -18,4 +18,9 @@
     <string name="hours_service">Hours Today:</string>
     <string name="timing_checkin">11:00 AM - 10:00 PM</string>
     <string name="status_service">Open</string>
+
+    <string name="facebook_app_id">285288192038585</string>
+    <string name="fb_login_protocol_scheme">fb285288192038585</string>
+
+
 </resources>
