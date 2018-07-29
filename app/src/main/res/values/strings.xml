@@ -21,6 +21,6 @@
 
     <string name="facebook_app_id">285288192038585</string>
     <string name="fb_login_protocol_scheme">fb285288192038585</string>
-
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">21564f01d7b7c2bc25ed4b652c1dd2f3</string>
 
 </resources>

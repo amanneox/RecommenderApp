@@ -6,8 +6,10 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
-
+import com.recom.www.recommenderapp.Util.PrefUtil;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -17,7 +19,6 @@ import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.recom.www.recommenderapp.Util.PrefUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     LoginResult loginResult;
     JSONObject object;
-
+    PrefUtil pf;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -42,12 +43,18 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         final String EMAIL = "email";
+        Button fbButton = findViewById(R.id.button_1);
 
-        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
+        final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions(Arrays.asList(
                 "public_profile", "email"));
         // If you are using in a fragment, call loginButton.setFragment(this);
-
+        fbButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            loginButton.performClick();
+            }
+        });
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -75,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                                     String last_name = jsonObject.getString("last_name");
                                     String email = jsonObject.getString("email");
                                     String gender = jsonObject.getString("gender");
+                                   // pf.saveFacebookUserInfo(first_name,last_name,email,gender,"");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -87,6 +95,10 @@ public class LoginActivity extends AppCompatActivity {
                 parameters.putString("fields", "id,first_name,last_name,email,gender");
                 request.setParameters(parameters);
                 request.executeAsync();
+
+                Intent myIntent = new Intent(getApplicationContext(), Verification.class);
+                getApplicationContext().startActivity(myIntent);
+
             }
 
             @Override
