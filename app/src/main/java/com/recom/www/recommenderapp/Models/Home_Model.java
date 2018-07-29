@@ -71,7 +71,6 @@ public class Home_Model extends BaseObservable {
         this.rating=rating;
         this.imgUrl=imgUrl;
         this.mile=mile;
-
         this.lat=lat;
         this.lng=lng;
         this.category=category;
