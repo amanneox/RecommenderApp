@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.facebook.AccessToken;
 import com.recom.www.recommenderapp.Util.PrefUtil;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
 
 
         callbackManager = CallbackManager.Factory.create();

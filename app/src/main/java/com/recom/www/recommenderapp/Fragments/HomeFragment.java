@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-
+/*
         Call<List<Home_Model>> call = apiService.getitemloc("Food",32,78,200.0F);
         call.enqueue(new Callback<List<Home_Model>>() {
             @Override
@@ -119,6 +119,7 @@ public class HomeFragment extends Fragment {
                 else {
                     Log.i(TAG,"Error:"+statusCode);
                 }
+
             }
 
             @Override
@@ -127,7 +128,7 @@ public class HomeFragment extends Fragment {
             }
 
         });
-
+*/
         return rootview;
     }
 

@@ -20,6 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.facebook.AccessToken;
+import com.facebook.accountkit.AccountKit;
+import com.facebook.login.LoginManager;
 import com.recom.www.recommenderapp.Fragments.HomeFragment;
 import com.recom.www.recommenderapp.Fragments.NearbyFragment;
 import com.recom.www.recommenderapp.Fragments.ProfileFragment;
@@ -33,6 +36,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        com.facebook.accountkit.AccessToken accessToken1 = AccountKit.getCurrentAccessToken();
+        if(accessToken == null || accessToken1 == null){
+            if (LoginManager.getInstance()!=null){
+                LoginManager.getInstance().logOut();
+            }
+            Intent myIntent = new Intent(getApplicationContext(), LoginActivity.class);
+            getApplicationContext().startActivity(myIntent);
+        }
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

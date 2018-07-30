@@ -34,7 +34,7 @@ public class Verification extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.CODE); // or .ResponseType.TOKEN
+                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
         // ... perform additional configuration ...
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
@@ -52,20 +52,20 @@ public class Verification extends AppCompatActivity {
             String toastMessage= "";
             if (loginResult.getError() != null) {
                 toastMessage = loginResult.getError().getErrorType().getMessage();
+                Log.i("Success",toastMessage);
             } else if (loginResult.wasCancelled()) {
                 toastMessage = "Login Cancelled";
+                Log.i("Success",toastMessage);
             } else {
+                Log.i("Success", String.valueOf(loginResult.getAccessToken()));
                 if (loginResult.getAccessToken() != null) {
                     toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
                     getAccount();
+                    Log.i("Success",toastMessage);
                 }
             }
-            // Surface the result to your user in an appropriate way.
-            Toast.makeText(
-                    this,
-                    toastMessage,
-                    Toast.LENGTH_LONG)
-                    .show();
+            Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+            getApplicationContext().startActivity(myIntent);
         }
     }
 
@@ -73,6 +73,11 @@ public class Verification extends AppCompatActivity {
      * Gets current account from Facebook Account Kit which include user's phone number.
      */
     private void getAccount(){
+        Toast.makeText(
+                getApplicationContext(),
+                "Hello Working Success",
+                Toast.LENGTH_LONG)
+                .show();
         AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
             @Override
             public void onSuccess(final Account account) {
@@ -95,6 +100,11 @@ public class Verification extends AppCompatActivity {
             public void onError(final AccountKitError error) {
                 Log.e("AccountKit",error.toString());
                 // Handle Error
+                Toast.makeText(
+                        getApplicationContext(),
+                        error.toString(),
+                        Toast.LENGTH_LONG)
+                        .show();
             }
         });
     }
