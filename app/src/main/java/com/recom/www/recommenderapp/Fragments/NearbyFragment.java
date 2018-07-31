@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.recom.www.recommenderapp.API.ApiClient;
@@ -39,21 +40,22 @@ public class NearbyFragment extends Fragment {
     List<JsonObject> jsonlist=new ArrayList<>();
     private RecyclerView recyclerView;
     private NearbyAdapter mAdapter;
+    private ShimmerFrameLayout mShimmerViewContainer;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.nearby_view, container, false);
-       // mAdapter = new NearbyAdapter(j);
+        mShimmerViewContainer = rootview.findViewById(R.id.shimmer_view_container);
         final RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_nearby);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        //recyclerView.setAdapter(mAdapter);
+        mAdapter = new NearbyAdapter(jsonlist);
+        recyclerView.setAdapter(mAdapter);
 
 
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
-
         Call<List<Nearby_Model>> call = apiService.getNearbyItems();
         call.enqueue(new Callback<List<Nearby_Model>>() {
             @Override
@@ -62,15 +64,19 @@ public class NearbyFragment extends Fragment {
                 List<Nearby_Model> items = response.body();
                 Iterator<Nearby_Model> it=items.iterator();
                 Gson gson = new Gson();
-
+                Log.i("Response",response.body().toString());
                 while (it.hasNext()) {
                     String x = gson.toJson(it.next());
                     JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
                     jsonlist.add(jsonObject);
                     it.remove();
                 }
-
-                recyclerView.setAdapter(new NearbyAdapter(jsonlist, R.layout.nearby_list, getContext()));
+                Log.i("OK", String.valueOf(jsonlist));
+                mAdapter = new NearbyAdapter(jsonlist);
+                mAdapter.notifyDataSetChanged();
+                recyclerView.setAdapter(mAdapter);
+                mShimmerViewContainer.stopShimmerAnimation();
+                mShimmerViewContainer.setVisibility(View.GONE);
 
             }
 
@@ -84,7 +90,16 @@ public class NearbyFragment extends Fragment {
 
         return rootview;
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        mShimmerViewContainer.startShimmerAnimation();
+    }
+    @Override
+    public void onPause() {
+        mShimmerViewContainer.stopShimmerAnimation();
+        super.onPause();
+    }
     }
 
 

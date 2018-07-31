@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 
 
 public interface ApiInterface {
-    @GET("api/items")
+    @GET("posts/list")
     Call<List<Nearby_Model>> getNearbyItems();
 
     @POST("api/items/loc/")
