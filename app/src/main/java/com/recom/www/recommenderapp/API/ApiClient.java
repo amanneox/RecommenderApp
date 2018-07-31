@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://recommenderpython-dev.ap-south-1.elasticbeanstalk.com/";
+    public static final String BASE_URL = "https://auflc5vqfh.execute-api.ap-south-1.amazonaws.com/dev/";
     private static Retrofit retrofit = null;
 
 

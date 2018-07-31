@@ -2,6 +2,7 @@ package com.recom.www.recommenderapp.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +17,18 @@ import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.Models.Recent_Model;
 import com.recom.www.recommenderapp.R;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHolder> {
 
     private final List<JsonObject> jsonlist;
-    private final Context context;
     private List<Nearby_Model> itemlist;
 
-    public NearbyAdapter(List<JsonObject> jsonlist, int nearby_list, Context context) {
+    public NearbyAdapter(List<JsonObject> jsonlist) {
         this.jsonlist = jsonlist;
        // this.rowLayout = rowLayout;
-        this.context = context;
     }
 
 
@@ -60,10 +61,13 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         JsonObject item = jsonlist.get(position);
-        holder.name.setText(String.valueOf(item.get("name")));
-        holder.rating.setRating(Float.valueOf(String.valueOf(item.get("rating"))));
-        holder.genre.setText(String.valueOf(item.get("category")));
-        holder.value.setText( String.valueOf(item.get("value")));
+        holder.name.setText((item.get("name")).toString().replaceAll("\"", ""));
+        JsonObject reviews = (JsonObject) item.get("reviews");
+        JsonObject location =(JsonObject) item.get("location");
+        JsonObject images = (JsonObject) item.get("images");
+        holder.rating.setRating(Float.valueOf(String.valueOf(reviews.get("rating"))));
+        holder.genre.setText((item.get("category")).toString().replaceAll("\"", ""));
+        holder.value.setText((item.get("value")).toString().replaceAll("\"", ""));
         Glide.with(holder.img.getContext())
                 .load(item.get("img_url"))
                 .apply(new RequestOptions()
