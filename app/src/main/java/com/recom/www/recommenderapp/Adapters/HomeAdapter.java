@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,6 +28,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, mile, genre,name,price;
+        public RatingBar rating;
         public ImageView image;
 
         MyViewHolder(View view) {
@@ -37,6 +39,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             name=(TextView)view.findViewById(R.id.name);
             image=view.findViewById(R.id.image);
             price=view.findViewById(R.id.price);
+            rating=view.findViewById(R.id.ratingbar);
         }
     }
 
@@ -55,14 +58,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         JsonObject item = jsonlist.get(position);
-        holder.title.setText(String.valueOf(item.get("title")));
-        holder.genre.setText(String.valueOf(item.get("genre")));
-        holder.mile.setText(String.valueOf(item.get("mile")));
-        holder.name.setText(String.valueOf(item.get("name")));
+        JsonObject reviews = (JsonObject) item.get("reviews");
+        JsonObject location =(JsonObject) item.get("location");
+        holder.title.setText(String.valueOf(item.get("title")).replaceAll("\"", ""));
+        holder.genre.setText(String.valueOf(item.get("category")).replaceAll("\"", ""));
+        holder.mile.setText(String.valueOf(location.get("city")).replaceAll("\"", ""));
+        holder.name.setText(String.valueOf(item.get("name")).replaceAll("\"", ""));
         holder.price.setText(String.valueOf(item.get("value")));
+        holder.rating.setRating(Float.valueOf(String.valueOf(reviews.get("rating"))));
+        /*
         Glide.with(holder.image.getContext())
                 .load(String.valueOf(item.get("img_url")))
                 .into(holder.image);
+        */
     }
 
     @Override
