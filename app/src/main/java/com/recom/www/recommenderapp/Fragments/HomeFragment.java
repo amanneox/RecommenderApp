@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.recom.www.recommenderapp.API.ApiClient;
@@ -47,6 +49,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     List<JsonObject> jsonlist=new ArrayList<>();
     private HomeAdapter mAdapter;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    private ShimmerFrameLayout mShimmerViewContainer;
     String[] gridViewString = {
             "Food", "Shopping", "Hot&New", "Delivery", "Bars", "Coffee",
             "Gas Station", "Drug Store", "Deals", "More"
@@ -62,15 +66,16 @@ public class HomeFragment extends Fragment {
 
 
         View rootview=inflater.inflate(R.layout.home_view, container, false);
-       final RecyclerView recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_home);
-
-       // mAdapter = new HomeAdapter(itemlist);
+        recyclerView = (RecyclerView)rootview.findViewById(R.id.recycler_view_home);
+        mShimmerViewContainer = rootview.findViewById(R.id.shimmer_view_container);
+        mSwipeRefreshLayout = (SwipeRefreshLayout)rootview.findViewById(R.id.SwipeRefreshLayout);
+        mAdapter = new HomeAdapter(jsonlist);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-       // recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(mAdapter);
 
-        //prepareMovieData();
+
         CustomGridViewActivity adapterViewAndroid = new CustomGridViewActivity(getContext(), gridViewString, gridViewImageId);
         androidGridView=(GridView)rootview.findViewById(R.id.grid_view_image_text);
         androidGridView.setAdapter(adapterViewAndroid);
@@ -91,34 +96,43 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        loadData();
+        return rootview;
+    }
 
-
+    private void loadData() {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
-
-/*
-        Call<List<Home_Model>> call = apiService.getitemloc("Food",32,78,200.0F);
+        Call<List<Home_Model>> call = apiService.getItemsHome();
         call.enqueue(new Callback<List<Home_Model>>() {
             @Override
             public void onResponse(Call<List<Home_Model>>call, Response<List<Home_Model>> response) {
                 int statusCode = response.code();
-                if (response.isSuccessful()) {
-                    List<Home_Model> items = response.body();
-                    Iterator<Home_Model> it = items.iterator();
-                    Gson gson = new Gson();
-                    Log.i(TAG,"Success:"+statusCode);
-                    while (it.hasNext()) {
-                        String x = gson.toJson(it.next());
-                        JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
-                        jsonlist.add(jsonObject);
-                        it.remove();
-                    }
-                     Log.i(TAG, ":" + jsonlist);
-                     recyclerView.setAdapter(new HomeAdapter(jsonlist));
+                jsonlist.clear();
+                List<Home_Model> items = response.body();
+                Iterator<Home_Model> it=items.iterator();
+                Gson gson = new Gson();
+                Log.i("Response",response.body().toString());
+                while (it.hasNext()) {
+                    String x = gson.toJson(it.next());
+                    JsonObject jsonObject = gson.fromJson(x, JsonObject.class);
+                    jsonlist.add(jsonObject);
+                    it.remove();
                 }
-                else {
-                    Log.i(TAG,"Error:"+statusCode);
-                }
+                Log.i("OK", String.valueOf(jsonlist));
+                mAdapter = new HomeAdapter(jsonlist);
+                mAdapter.notifyDataSetChanged();
+                recyclerView.setAdapter(mAdapter);
+                mShimmerViewContainer.stopShimmerAnimation();
+                mShimmerViewContainer.setVisibility(View.GONE);
+                mSwipeRefreshLayout.setRefreshing(false);
 
             }
 
@@ -128,15 +142,21 @@ public class HomeFragment extends Fragment {
             }
 
         });
-*/
-        return rootview;
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        mShimmerViewContainer.startShimmerAnimation();
+    }
+    @Override
+    public void onPause() {
+        mShimmerViewContainer.stopShimmerAnimation();
+        super.onPause();
     }
 }

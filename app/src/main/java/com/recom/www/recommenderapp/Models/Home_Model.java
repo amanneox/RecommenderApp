@@ -7,6 +7,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.recom.www.recommenderapp.BR;
@@ -33,8 +35,12 @@ public class Home_Model extends BaseObservable {
     private
     float lng;
 
-
-
+    @SerializedName("images")
+    private JsonArray images;
+    @SerializedName("location")
+    private JsonObject location;
+    @SerializedName("reviews")
+    private JsonObject reviews;
     @SerializedName("title")
     private String title;
     @SerializedName("genre")
@@ -63,7 +69,7 @@ public class Home_Model extends BaseObservable {
     public Home_Model() {
     }
 
-    public Home_Model(String title, String genre, String name,String price,int rating,String imgUrl,String mile,String category,int range,float lat,float lng) {
+    public Home_Model(String title, String genre, String name, String price, int rating, String imgUrl, String mile, String category, int range, float lat, float lng, JsonObject location,JsonObject reviews) {
         this.title = title;
         this.genre = genre;
         this.name = name;
@@ -74,7 +80,8 @@ public class Home_Model extends BaseObservable {
         this.lat=lat;
         this.lng=lng;
         this.category=category;
-        this.range=range;
+        this.location=location;
+        this.reviews=reviews;
     }
 
     @BindingAdapter({"imgUrl"})
