@@ -28,6 +28,12 @@
             <include android:id="@+id/shim3" layout="@layout/shim_nearby_item" />
             </LinearLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/SwipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_below="@id/custombar"
+            android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +42,7 @@
             android:scrollbars="vertical">
 
     </android.support.v7.widget.RecyclerView>
-
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 
