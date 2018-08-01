@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mapbox.mapboxsdk.maps.MapView;
 import com.recom.www.recommenderapp.Fragments.CheckInFragment;
 import com.recom.www.recommenderapp.Fragments.DisplayFragment;
 import com.recom.www.recommenderapp.Fragments.ReviewFragment;
@@ -21,6 +22,7 @@ import com.recom.www.recommenderapp.Fragments.ReviewFragment;
 
 public class
 DisplayActivity extends AppCompatActivity {
+    private MapView mapView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

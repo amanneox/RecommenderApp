@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:descendantFocusability="blocksDescendants"
     android:layout_height="match_parent">
     <android.support.v4.widget.NestedScrollView
@@ -108,11 +110,15 @@
 
         </LinearLayout>
 
-        <com.google.android.gms.maps.MapView
+        <com.mapbox.mapboxsdk.maps.MapView
             android:id="@+id/mapView"
             android:layout_below="@id/main_data"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/display_map_h" />
+            android:layout_height="@dimen/display_map_h"
+            mapbox:mapbox_cameraTargetLat="40.73581"
+            mapbox:mapbox_cameraTargetLng="-73.99155"
+            mapbox:mapbox_styleUrl="mapbox://styles/mapbox/streets-v10"
+            mapbox:mapbox_cameraZoom="11" />
 
         <LinearLayout
             android:id="@+id/map_detail"

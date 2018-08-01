@@ -4,6 +4,10 @@ android {
     dataBinding {
         enabled = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.recom.www.recommenderapp"
@@ -21,8 +25,11 @@ android {
     }
     buildToolsVersion '27.0.3'
 }
-
+repositories {
+    mavenCentral()
+}
 dependencies {
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:6.3.0'
     implementation 'com.facebook.android:account-kit-sdk:4.+'
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
     implementation 'com.github.bumptech.glide:glide:4.6.1'
