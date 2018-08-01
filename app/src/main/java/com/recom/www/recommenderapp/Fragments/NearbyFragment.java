@@ -1,5 +1,6 @@
 package com.recom.www.recommenderapp.Fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
@@ -24,6 +26,7 @@ import com.recom.www.recommenderapp.Adapters.NearbyAdapter;
 import com.recom.www.recommenderapp.MainActivity;
 import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.R;
+import com.recom.www.recommenderapp.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,6 +58,17 @@ public class NearbyFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new NearbyAdapter(jsonlist);
         recyclerView.setAdapter(mAdapter);
+
+        EditText search=rootview.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

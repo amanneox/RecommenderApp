@@ -15,12 +15,9 @@ import retrofit2.http.POST;
 public interface ApiInterface {
     @GET("posts/list")
     Call<List<Nearby_Model>> getNearbyItems();
+    @GET("posts/list")
+    Call<List<Home_Model>> getItemsHome();
 
-    @POST("api/items/loc/")
-    Call<List<Home_Model>> getitemloc(@Field("category") String category,
-                        @Field("range") int range,
-                          @Field("lng") int lng,
-                        @Field("lat") float lat);
 
 /*
     @GET("movie/{id}")
