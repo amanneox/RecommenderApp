@@ -26,6 +26,7 @@ import com.facebook.login.LoginManager;
 import com.recom.www.recommenderapp.Fragments.HomeFragment;
 import com.recom.www.recommenderapp.Fragments.NearbyFragment;
 import com.recom.www.recommenderapp.Fragments.ProfileFragment;
+import com.recom.www.recommenderapp.Services.LocationService;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             iconView.setLayoutParams(layoutParams);
         }
 
-
+        startService(new Intent(this, LocationService.class));
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

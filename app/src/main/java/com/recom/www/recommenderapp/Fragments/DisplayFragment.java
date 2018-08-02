@@ -37,7 +37,7 @@ public class DisplayFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Mapbox.getInstance(Objects.requireNonNull(getContext()), "pk.eyJ1IjoiYW1hbm5lb3giLCJhIjoiY2prM3ZzOG9nMTN4bTNsa2N2cTJocXkwaiJ9.7o16top0SZdv449TWqdI1g");
+        Mapbox.getInstance(Objects.requireNonNull(getContext()), getString(R.string.mapbox_token));
         View rootview=inflater.inflate(R.layout.display_fragment, container, false);
         mapView = (MapView)rootview.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
