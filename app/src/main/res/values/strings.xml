@@ -22,5 +22,5 @@
     <string name="facebook_app_id">285288192038585</string>
     <string name="fb_login_protocol_scheme">fb285288192038585</string>
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">21564f01d7b7c2bc25ed4b652c1dd2f3</string>
-
+    <string name="mapbox_token">pk.eyJ1IjoiYW1hbm5lb3giLCJhIjoiY2prM3ZzOG9nMTN4bTNsa2N2cTJocXkwaiJ9.7o16top0SZdv449TWqdI1g</string>
 </resources>

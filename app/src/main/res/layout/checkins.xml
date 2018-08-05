@@ -16,7 +16,7 @@
         <include
             android:id="@+id/custombar"
             layout="@layout/display_bar" />
-        
+
         <com.mapbox.mapboxsdk.maps.MapView
             android:id="@+id/mapView"
             android:layout_below="@id/custombar"
