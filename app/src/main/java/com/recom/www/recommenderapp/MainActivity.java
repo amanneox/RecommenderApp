@@ -247,9 +247,11 @@ public class MainActivity extends AppCompatActivity implements OnLocationUpdated
 
             Events.ActivityFragmentMessage activityFragmentMessageEvent =
                     new Events.ActivityFragmentMessage(text);
+            Events.ActivityActivityMessage activityMessageEvent =
+                    new Events.ActivityActivityMessage("Hello From Main");
 
             GlobalBus.getBus().postSticky(activityFragmentMessageEvent);
-
+            GlobalBus.getBus().postSticky(activityMessageEvent);
             //EventBus.getDefault().postSticky(new LocationReceivedEvent(6.4531, 3.3958));
             // We are going to get the address for the current position
 

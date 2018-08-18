@@ -159,6 +159,7 @@ public class HomeFragment extends Fragment {
     }
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void getMessage(Events.ActivityFragmentMessage activityFragmentMessage) {
+
         Toast.makeText(getContext(),activityFragmentMessage.getMessage(),
                 Toast.LENGTH_SHORT).show();
 
