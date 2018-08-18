@@ -1,5 +1,7 @@
 package com.recom.www.recommenderapp.Fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -28,10 +31,16 @@ import com.recom.www.recommenderapp.API.ApiInterface;
 import com.recom.www.recommenderapp.Adapters.CustomGridViewActivity;
 import com.recom.www.recommenderapp.Adapters.HomeAdapter;
 import com.recom.www.recommenderapp.Adapters.NearbyAdapter;
+import com.recom.www.recommenderapp.Models.Events;
+import com.recom.www.recommenderapp.Models.GlobalBus;
 import com.recom.www.recommenderapp.Models.Home_Model;
 import com.recom.www.recommenderapp.Models.Nearby_Model;
 import com.recom.www.recommenderapp.R;
 import com.recom.www.recommenderapp.SearchActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -104,6 +113,11 @@ public class HomeFragment extends Fragment {
             }
         });
         loadData();
+
+        // Sending Message
+        Events.FragmentActivityMessage fragmentActivityMessageEvent =
+                new Events.FragmentActivityMessage("From Home Fragment");
+        GlobalBus.getBus().postSticky(fragmentActivityMessageEvent);
         return rootview;
     }
 
@@ -137,13 +151,36 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Home_Model>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Home_Model>> call, @NonNull Throwable t) {
 
             }
 
         });
     }
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void getMessage(Events.ActivityFragmentMessage activityFragmentMessage) {
+        Toast.makeText(getContext(),activityFragmentMessage.getMessage(),
+                Toast.LENGTH_SHORT).show();
 
+        Toast.makeText(getContext(),"Location In Fragment",
+                Toast.LENGTH_LONG).show();
+
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (!GlobalBus.getBus().isRegistered(this)) {
+            GlobalBus.getBus().register(this);
+        }
+
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        GlobalBus.getBus().unregister(this);
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
