@@ -1,5 +1,6 @@
 package com.recom.www.recommenderapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,8 +21,13 @@ import android.widget.Toast;
 import com.recom.www.recommenderapp.Adapters.CustomGridViewActivity;
 import com.recom.www.recommenderapp.Adapters.RecentAdapter;
 import com.recom.www.recommenderapp.Adapters.UserAdapter;
+import com.recom.www.recommenderapp.Models.Events;
+import com.recom.www.recommenderapp.Models.GlobalBus;
 import com.recom.www.recommenderapp.Models.Recent_Model;
 import com.recom.www.recommenderapp.Models.User_Model;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +38,7 @@ public class SearchActivity extends AppCompatActivity {
     private List<Recent_Model> itemlist = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecentAdapter mAdapter;
+    private EditText location;
     GridView androidGridView;
     String[] gridViewString = {
             "Food", "Shopping", "Hot&New", "Delivery", "Bars", "Coffee",
@@ -67,7 +75,7 @@ public class SearchActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
             }
         });
-
+        location =findViewById(R.id.location);
         TextView cancel=findViewById(R.id.cancel);
         TextView search=findViewById(R.id.search_action);
         search.setOnClickListener(new View.OnClickListener() {
@@ -95,5 +103,23 @@ public class SearchActivity extends AppCompatActivity {
 
 
     }
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void getMessage(Events.ActivityActivityMessage ActivityMessage) {
+        location.setText(ActivityMessage.getMessage());
 
+    }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        GlobalBus.getBus().unregister(this);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Register this fragment to listen to event.
+        if (!GlobalBus.getBus().isRegistered(this)) {
+            GlobalBus.getBus().register(this);
+        }
+    }
 }
